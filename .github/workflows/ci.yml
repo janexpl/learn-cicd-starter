@@ -21,7 +21,7 @@ jobs:
       - name: Show go version
         run: go test -cover ./...
   style:
-    name: style
+    name: Style
     runs-on: ubuntu-latest
 
     steps:
