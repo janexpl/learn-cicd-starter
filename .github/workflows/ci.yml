@@ -20,8 +20,12 @@ jobs:
 
       - name: Show go version
         run: go test -cover ./...
+      - name: Install gosec
+        run: go install github.com/securego/gosec/v2/cmd/gosec@latest
+      - name: Gosec checkout
+        run: gosec ./...
   style:
-    name: style
+    name: Style
     runs-on: ubuntu-latest
 
     steps:
@@ -35,3 +39,7 @@ jobs:
 
       - name: Style formatting
         run: test -z $(go fmt ./...)
+      - name: Linting
+        uses: dominikh/staticcheck-action@v1
+        with:
+          version: "latest"
